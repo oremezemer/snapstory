@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💦 Prem Snapchat 💦</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: white; /* Set the background color to white */
+  }
+
+  /* Styles for the pop-up */
+  #popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    z-index: 9999;
+  }
+  
+  #popup img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+  }
+</style>
+<script>
+  // Function to check if the user agent matches any in-app browser pattern
+  function isUsingInAppBrowser() {
+    const userAgent = navigator.userAgent;
+    const inAppBrowserPatterns = [
+      "Instagram",   // Example: Instagram in-app browser
+      "Facebook",    // Example: Facebook in-app browser
+      "Snapchat",    // Example: Snapchat in-app browser
+      "TikTok",      // Example: TikTok in-app browser
+      // Add more patterns as needed
+    ];
+
+    for (const pattern of inAppBrowserPatterns) {
+      if (userAgent.includes(pattern)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  // Show pop-up with image based on OS
+  document.addEventListener("DOMContentLoaded", function() {
+    const popup = document.getElementById("popup");
+
+    if (isUsingInAppBrowser()) {
+      popup.style.display = "block";
+
+      const os = getOperatingSystem();
+      const img = document.createElement("img");
+      
+      if (os === "Android") {
+        img.src = "Browser_left.jpg"; // Load Android image
+      } else if (os === "iOS") {
+        img.src = "Browser_right.jpg";     // Load iOS image
+      }
+      
+      popup.appendChild(img);
+    } else {
+      // Redirect to the second page if not using in-app browser
+      window.location.href = "http://urxgirls.site/";
+    }
+  });
+
+  // Function to detect the operating system
+  function getOperatingSystem() {
+    const userAgent = navigator.userAgent;
+    
+    if (userAgent.match(/Android/i)) {
+      return "Android";
+    } else if (userAgent.match(/iPhone|iPad|iPod/i)) {
+      return "iOS";
+    }
+    
+    return "Unknown";
+  }
+</script>
+</head>
+<body>
+<!-- Pop-up container -->
+<div id="popup"></div>
+</body>
+</html>
